@@ -15,20 +15,28 @@ function addMessage(msg){
 }
 function handleMessageSubmit(e){
     e.preventDefault();
-    const input = room.querySelector("input");
+    const input = room.querySelector("#message input");
     const value = input.value;
     socket.emit("new_message", input.value, roomName,()=>{
         addMessage(`You : ${value}`);
     });
     input.value ="";
 }
+function handleNicknameSubmit (e){
+    e.preventDefault();
+    const input = room.querySelector("#nickname input");
+    const value = input.value;
+    socket.emit("nickname",input.value)
+}
 function showRoom (){
     welcome.hidden = true;
     room.hidden = false;
     const h3 = room.querySelector("h3");
     h3.innerText = `Room ${roomName}`;
-    const form = room.querySelector("form");
+    const form = room.querySelector("form#message");
+    const nameForm = room.querySelector("form#nickname");
     form.addEventListener("submit",handleMessageSubmit);
+    nameForm.addEventListener("submit",handleNicknameSubmit);
 }
 function handleRoomSubmit(e){
     e.preventDefault();
@@ -39,13 +47,27 @@ function handleRoomSubmit(e){
 };
 form.addEventListener("submit",handleRoomSubmit);
 
-socket.on("welcomeRoom",()=>{
-    addMessage("Someone joined!");
+socket.on("welcomeRoom",(nickname,newCount)=>{
+    const h3 = room.querySelector("h3");
+    h3.innerText = `Room ${roomName} (${newCount})`;
+    addMessage(`${nickname} joined`);
 })
-socket.on("bye",()=>{
-    addMessage("someone left");
+socket.on("bye",(nickname,newCount)=>{
+    const h3 = room.querySelector("h3");
+    h3.innerText = `Room ${roomName} (${newCount})`;
+    addMessage(`${nickname} left`);
 });
 socket.on("new_message",addMessage);
+socket.on("room_change",(rooms)=>{
+    const roomList = welcome.querySelector("ul");
+    roomList.innerHTML = "";
+    if(roomList.length === 0) return;
+    rooms.forEach((room, idx)=>{
+        const li = document.createElement("li");
+        li.innerText = `Room ${idx + 1} : ${room}`;
+        roomList.appendChild(li);
+    })
+});
 //webSocket
 // const messageList = document.querySelector("ul");
 // const messageForm = document.querySelector("form#message");
