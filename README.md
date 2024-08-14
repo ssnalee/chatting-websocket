@@ -1,3 +1,4 @@
-# Noom
+# Chatting Webpage
 
-Zoom Clone using NodeJS, WebRTC and Websockets.
+skill : pug, javascript
+using NodeJS, WebRTC and Websockets.

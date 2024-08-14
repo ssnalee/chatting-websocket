@@ -4,27 +4,33 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Noom
-        link(rel="stylesheet", href="https://unpkg.com/mvp.css")
+        title anonymous chat
+        //- link(rel="stylesheet", href="https://unpkg.com/mvp.css")
+        link(rel="stylesheet", href="./public/css/style.css")
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=Noto+Serif+KR:wght@200..900&display=swap" rel="stylesheet")
     body
         header
-            h1 Noom
+            h1 메신저
+                img(src="./public/img/messinger.png")
         main
-            div#welcome
-                form
+            div#welcome.form-wrap
+                form#nickname
+                    input(type="text", placeholder="nickname", required)
+                    button 생성            
+                form#roomName
                     input(type="text", placeholder="room name", required)
-                    button Enter Room
-                h4 Open Rooms :
-                ul
+                    button 방 생성
+                div.chat-list 
+                    h4 채팅방 목록
+                    ul
             div#room
                 h3
                 ul
-                form#nickname
-                    input(type="text", placeholder="nickname", required)
-                    button Send
-                form#message
-                    input(type="text", placeholder="message name", required)
-                    button Enter Message
+                form#message.msg
+                    input(type="text", placeholder="메세지를 입력하세요...", required)
+                    button Enter
             //- form#nick
             //-     input(type="text", placeholder="choose a nickname", required)
             //-     button Save

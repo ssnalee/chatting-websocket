@@ -1,0 +1,164 @@
+:root {
+  --default-color: #ffbb00;
+  --light-default-color: #fcf5e3;
+}
+
+* {
+  font-family: "Gowun Dodum", "Noto Serif KR", serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+header {
+  background-color: var(--default-color);
+  color: #fff;
+  letter-spacing: 3px;
+}
+main {
+  /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; */
+}
+h1 {
+  text-align: center;
+  padding: 10px;
+  font-size: 30px;
+}
+h1 img {
+  width: 30px;
+}
+h4 {
+  width: 100%;
+  background-color: #d4d4d4;
+  padding: 10px;
+}
+
+.form-wrap {
+  width: 100%;
+}
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form-wrap form {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+form input {
+  width: 300px;
+  height: 48px;
+  outline: none;
+  border: 1px solid var(--default-color);
+  padding: 0 10px;
+  font-size: 18px;
+  border-radius: 8px 0 0 8px;
+}
+form input:focus {
+  background-color: var(--light-default-color);
+}
+form button {
+  width: 100px;
+  height: 50px;
+  font-size: 15px;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  background-color: var(--default-color);
+  font-weight: 700;
+}
+.chat-list {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+}
+.msg {
+  width: 100%;
+  background-color: var(--default-color);
+  position: fixed;
+  bottom: 0;
+}
+.msg input {
+  border: none;
+  border-radius: 0;
+  width: 100%;
+}
+.msg button {
+}
+#room h3{
+    margin-bottom: 10px;
+    padding :10px;
+    border-bottom: 2px solid var(--default-color);
+}
+#room ul {
+  padding:10px;
+  clear: both;
+}
+#room li {
+  width: 80%;
+  float: left;
+  list-style: none;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+#room li img {
+  width: 50px;
+}
+#room li span {
+  margin: 0 20px 0 5px;
+}
+#room li p {
+  background-color: #e5e5e5;
+  /* width: 100%; */
+  padding: 10px;
+  word-break: break-all;
+  position: relative;
+}
+#room li p:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    transform: translateY(-50%);
+    border-right: 30px solid #e5e5e5;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 0;
+}
+#room li.self {
+  float: right;
+  justify-content: flex-end;
+}
+#room li.self img {
+  display: none;
+}
+#room li.self span {
+  display: none;
+}
+#room li.self p {
+  background-color: #ffdc30;
+  margin-right: 20px;
+}
+#room li.self p:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    left: auto;
+    transform: translateY(-50%);
+    border-left: 30px solid #ffdc30;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 0;
+}
+

@@ -1,8 +1,8 @@
 {
   "type": "module",
-  "name": "zoom",
+  "name": "chatting",
   "version": "1.0.0",
-  "description": "Zoom Clone using NodeJS, WebRTC and Websockets.",
+  "description": "using NodeJS, WebRTC and Websockets.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,7 +14,9 @@
     "@babel/core": "^7.25.2",
     "@babel/node": "^7.25.0",
     "@babel/preset-env": "^7.25.3",
-    "nodemon": "^3.1.4"
+    "@prettier/plugin-pug": "^3.0.0",
+    "nodemon": "^3.1.4",
+    "prettier": "^3.3.3"
   },
   "dependencies": {
     "@socket.io/admin-ui": "^0.5.1",
