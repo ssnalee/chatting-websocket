@@ -33,6 +33,7 @@ function publicRooms (){
     }
   });
   return publicRooms;
+
   // const sids = wsServer.sockets.adapter.sids;
   // const rooms = wsServer.sockets.adapter.rooms;
 }
@@ -66,6 +67,9 @@ wsServer.on("connection", (socket) => {
   socket.on("nickname",(nickname,done)=>{
     socket["nickname"]=nickname;
     done();
+  });
+  socket.on("room_check",()=>{
+    wsServer.sockets.emit("room_change",publicRooms());
   });
 //   console.log(socket);
 });

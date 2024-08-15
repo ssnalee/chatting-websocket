@@ -81,6 +81,14 @@ form button {
   width: 100%;
   z-index: 10;
 }
+.chat-list ul{
+  /* display: flex; */
+  /* flex-direction: column; */
+}
+.chat-list li{
+  list-style: none;
+  padding: 10px;
+}
 .msg {
   width: 100%;
   background-color: var(--default-color);

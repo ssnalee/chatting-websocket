@@ -7,7 +7,9 @@ const room = document.getElementById("room");
 room.hidden = true;
 form.style.display = "none";
 let roomName;
-
+window.onload = function(){
+    appLoad();
+}
 function addMessage(msg,type){
     const ul = room.querySelector("ul");
     const li = document.createElement("li");
@@ -48,6 +50,9 @@ function showRoom (){
     const form = room.querySelector("form#message");
     form.addEventListener("submit",handleMessageSubmit);
 }
+function appLoad(){
+    socket.emit("room_check");
+}
 function showRoomList() {
     nameForm.style.display = "none";
     form.style.display = "flex";
@@ -71,7 +76,8 @@ socket.on("room_change",(rooms)=>{
     if(roomList.length === 0) return;
     rooms.forEach((room, idx)=>{
         const li = document.createElement("li");
-        li.innerText = `Room ${idx + 1} : ${room}`;
+        li.innerText = room;
+        li.dataset("roomName",room);
         roomList.appendChild(li);
     })
 });
